@@ -4,6 +4,8 @@ metadata:
   name: java-app-deployment
   labels:
     app: java
+  annotations:
+    kubernetes.io/change-cause: "Version 1"
 spec:
   replicas: 6
   minReadySeconds: 10
@@ -17,29 +19,11 @@ spec:
       app: java
   template:
     metadata:
-       labels:
-       app: java
+      labels:
+        app: java
     spec:
       containers:
       - name: java
-        #image: <account-id>.dkr.ecr.<region>.amazonaws.com/<repository-name>:<tag>
-        image: 891377160766.dkr.ecr.us-east-1.amazonaws.com/java-application:10
+        image: 891377160766.dkr.ecr.us-east-1.amazonaws.com/java-application:4
         ports:
         - containerPort: 8080
-
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: java-app-service
-  labels:
-    app: java
-spec:
-  selector:
-    app: java
-  ports:
-    - port: 80
-      targetPort: 8080
-  type: LoadBalancer
-
