@@ -6,7 +6,7 @@
     <groupId>com.example</groupId>
     <artifactId>java-application</artifactId>
     <version>1.0</version>
-    <packeging>war</packeging>
+    <packaging>war</packaging>
     <build>
         <plugins>
             <plugin>
@@ -14,7 +14,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
                 <configuration>
-                    <failOnMissingWebXml>false</failOnMissiongWebXml>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
 
