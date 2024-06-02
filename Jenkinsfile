@@ -55,7 +55,7 @@ pipeline {
                             git config user.name "github-devopscloudy"
                             git add deployment.yaml
                             git commit -m "Update image tag to ${BUILD_NUMBER}"
-                            git remote set-url origin https://$GIT_USERNAME:$GIT_PASSWORD@github.com/https://github.com/github-cloudy/New-java-application
+                            git remote set-url origin https://$GIT_USERNAME:$GIT_PASSWORD@github.com/https://github.com/github-cloudy/New-java-application.git  // Updated URL here
                             git push
                         '''
                     }
