@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -47,19 +46,20 @@ pipeline {
             steps {
                 script {
                     // Update image tag in deployment.yaml
-                    sh "sed -i 's|891377160766.dkr.ecr.us-east-1.amazonaws.com/java-application:[0-9]*|${DOCKER_IMAGE}:${BUILD_NUMBER}|g' deployment.yaml"
+                    sh "sed -i 's|891377160766.dkr.ecr.us-east-1.amazonaws.com/java-application:[0-9]*|${DOCKER_IMAGE}:${BUILD_NUMBER}|g' deployment/deployment.yaml"
                     // Set Git credentials
                     withCredentials([usernamePassword(credentialsId: 'java_repo_creds', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh '''
-                            git config user.email "kishanlahare9@gmail.com"
-                            git config user.name "github-devopscloudy"
-                            git add deployment.yaml
+                            git config user.email "kishanrlahare9@gmail.com"
+                            git config user.name "github-cloudy"
+                            git add deployment/deployment.yaml
                             git commit -m "Update image tag to ${BUILD_NUMBER}"
-                            git remote set-url origin https://$GIT_USERNAME:$GIT_PASSWORD@github.com/https://github.com/github-cloudy/New-java-application.git  // Updated URL here
-                            git push
+                            git remote set-url origin https://$GIT_USERNAME:$GIT_PASSWORD@github.com/github-cloudy/New-java-application.git 
+                git push --set-upstream origin main
+                            git push            
                         '''
                     }
-                }
+                }   
             }
         }        
     }
